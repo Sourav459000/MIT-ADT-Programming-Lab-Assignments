@@ -38,7 +38,7 @@ class Circle extends Shape {
     }
     
     public void printArea() {
-        double area = Math.PI * radius * radius;
+        double area = Math.round(Math.PI * radius * radius);
         System.out.println("Circle Area: " + area);
     }
 }
@@ -46,7 +46,7 @@ class Circle extends Shape {
 public class Assignment6 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Whose area do you want to calculate? ");
+        System.out.println("Which shape's area do you want to calculate? ");
         System.out.println("1. Rectangle\n2. Triangle\n3. Circle.\nEnter your choice: ");
         int choice = sc.nextInt();
         int width, height, radius;

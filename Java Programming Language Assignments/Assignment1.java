@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Assignment1{
+public class Assignment1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter four Integers:");
@@ -14,6 +14,5 @@ public class Assignment1{
         else{
             System.out.print("All four Integers are not equal.");
         }
-        
     }
 }
