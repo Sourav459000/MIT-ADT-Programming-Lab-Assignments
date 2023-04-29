@@ -1,183 +1,303 @@
-/*A Dictionary stores keywords & its meanings. Provide facility for adding new 
-keywords, deleting keywords, updating values of any entry. Provide a facility 
-to display whole data sorted in ascending/ Descending order. Also, find how many
-maximum comparisons may require for finding any keyword. Use Binary Search Tree 
-for implementation */
-
-#include <iostream>
-#include<string>
+#include<iostream>
+#include<cstring>
 using namespace std;
-class dictionary;
-class node
+
+typedef struct node
 {
-  string word,meaning;
-  node *left,*right;
-  public:
-    friend class dictionary;
-    node()
-    {
-      left = NULL;
-      right = NULL;
-    }
-    node(string word, string meaning)
-    {
-      this -> word = word;
-      this -> meaning = meaning;
-      left = NULL;
-      right = NULL;
-    }
+    char k[20];
+    char m[20];
+    struct node *left, *right;
+    
+}Node;
+
+
+class dict
+{
+    public:
+        Node *root;
+        void create();
+        void display_asc(Node *);
+        void display_des(Node *);
+        void insert(Node *root, Node *temp);
+        int search(Node *, char[]);
+        int update(Node *, char[]);
+        Node *del(Node *, char[]);
+        Node *min(Node *);
 };
-class dictionary
+
+void dict :: create()
 {
-  node *root;
-  public:
-  dictionary()
-  {
-    root = NULL;
-  }
-  void create();
-  void inorder_rec(node *rnode);
-  void postorder_rec(node *rnode);
-  void inorder()
-  {
-    inorder_rec(root);
-  }
-  void postorder();
-  bool insert(string word,string meaning);
-  int search(string key);
-};
-int dictionary::search(string key)
-{
-  node *tmp = root;
-  int count;
-  if(tmp == NULL)
-  {
-    return -1;
-  }
-  if(root -> word == key)
-    return 1;
-  while(tmp != NULL)
-  {
-    if((tmp -> word) > key)
+    Node *temp;
+    int ch;
+
+    do
     {
-    tmp = tmp -> left;
-    count++;
-    }
-    else if((tmp -> word) < key)
-    {
-    tmp = tmp -> right;
-    count++;
-    }
-    else if(tmp -> word == key)
-    {
-    return ++count;
-    }
-  }
-  return -1;
+        temp = new Node;
+        cout << "\nEnter Keyword:";
+        cin >> temp->k;
+        cout << "\nEnter Meaning:";
+        cin >> temp->m;
+
+        temp->left = NULL;
+        temp->right = NULL;
+
+        if (root == NULL)
+        {
+            root = temp;
+        }
+        else
+        {
+            insert(root, temp);
+        }
+        cout << "\nDo u want to add more (yes = 1/no = 0):";
+        cin >> ch;
+    } while (ch == 1);
 }
-void dictionary::postorder()
+
+
+void dict :: insert(node *root, node *temp)
 {
-  postorder_rec(root);
-}
-void dictionary::postorder_rec(node *rnode)
-{
- if(rnode)
- {
-   postorder_rec(rnode -> right);
-   cout<<" "<<rnode->word<<" : "<<rnode->meaning<<endl;
-   postorder_rec(rnode->left);
- }
-}
-void dictionary::create()
-{
-  int n;
-  string wordI,meaningI;
-  cout<<"\nHow many Word to insert?:\n";
-  cin>>n;
-  if (n < 1)
-  {
-    cout<<"You don't want to enter any word. Hence, exiting.";
-    exit(0);
-  }
-  else
-  {
-    for(int i=0;i<n;i++)
+    if (strcmp(temp->k, root->k) < 0)
     {
-    cout<<"\nEnter Word: ";
-    cin>>wordI;
-    cout<<"Enter Meaning: \n";
-    cin>>meaningI;
-    insert(wordI,meaningI);
-    } 
-  }
-}
-void dictionary::inorder_rec(node *rnode)
-{
-  if(rnode)
-  {
-    inorder_rec(rnode -> left);
-    cout<<" "<<rnode -> word<<" : "<<rnode -> meaning<<endl;
-    inorder_rec(rnode -> right);
-  }
-}
-bool dictionary::insert(string word, string meaning)
-{
-  node *p = new node(word, meaning);
-  if(root == NULL)
-  {
-    root=p;
-    return true;
-  }
-  node *cur = root;
-  node *par = root;
-  while(cur != NULL)
-  {
-    if(word > cur -> word)
-    {
-      par = cur;
-      cur = cur -> right;
-    }
-    else if(word < cur -> word)
-    {
-      par = cur;
-      cur = cur -> left;
+        if (root->left == NULL)
+            root->left = temp;
+        else
+            insert(root->left, temp);
     }
     else
     {
-      cout<<"\nWord is already in the dictionary.\n";
-      return false;
+        if (root->right == NULL)
+            root->right = temp;
+        else
+            insert(root->right, temp);
     }
-  }
-  if(word > par -> word)
-  {
-    par -> right = p;
-    return true;
-  }
-  else
-  {
-    par -> left = p;
-    return true;
-  }
 }
-int main() 
+
+void dict :: display_asc(Node *root)
 {
-  string word;
-  dictionary dict;
-  dict.create();
-  cout<<"\nAscending order\n";
-  dict.inorder();
-  cout<<"\nDescending order:\n";
-  dict.postorder();
-  cout<<"\nEnter word to search: ";
-  cin>>word;
-  int comparisons = dict.search(word);
-  if(comparisons == -1)
-  {
-    cout<<"\nNot found word";
-  }
-  else
-  {
-    cout<<"\n"<<word<<" found in "<<comparisons<<" comparisons";
-  }
-  return 0;
+    if (root != NULL)
+    {
+        display_asc(root->left);
+        cout << "\n Key Word :" << root->k;
+        cout << "\t Meaning :" << root->m <<endl;
+        display_asc(root->right);
+    }
+}
+
+void dict :: display_des(Node *root)
+{
+    if (root != NULL)
+    {
+        display_des(root->right);
+        cout << "\n Key Word :" << root->k;
+        cout << "\t Meaning :" << root->m <<endl;
+        display_des(root->left);
+    }
+}
+
+
+int dict ::search(node *root, char k[20])
+{
+    int c = 0;
+    while (root != NULL)
+    {
+        c++;
+        if (strcmp(k, root->k) == 0)
+        {
+            cout << "\nNo of Comparisons :" << c;
+            return 1;
+        }
+        if (strcmp(k, root->k) < 0)
+            root = root->left;
+        if (strcmp(k, root->k) > 0)
+            root = root->right;
+    }
+
+    return -1;
+}
+
+int dict ::update(Node *root, char k[20])
+{
+    while (root != NULL)
+    {
+        if (strcmp(k, root->k) == 0)
+        {
+            cout << "\nEnter New Meaning of Keyword " << root->k<<" : ";
+            cin >> root->m;
+            return 1;
+        }
+        if (strcmp(k, root->k) < 0)
+            root = root->left;
+        if (strcmp(k, root->k) > 0)
+            root = root->right;
+    }
+    return -1;
+}
+
+Node *dict ::del(Node *root, char k[20])
+{
+    Node *temp;
+
+    if (root == NULL)
+    {
+        cout << "\nElement Not Found";
+        return root;
+    }
+
+    if (strcmp(k, root->k) < 0)
+    {
+        root->left = del(root->left, k);
+        return root;
+    }
+    if (strcmp(k, root->k) > 0)
+    {
+        root->right = del(root->right, k);
+        return root;
+    }
+
+    if (root->right == NULL && root->left == NULL)
+    {
+        temp = root;
+        delete temp;
+        return NULL;
+    }
+    if (root->right == NULL)
+    {
+        temp = root;
+        root = root->left;
+        delete temp;
+        return root;
+    }
+    else if (root->left == NULL)
+    {
+        temp = root;
+        root = root->right;
+        delete temp;
+        return root;
+    }
+    temp = min(root->right);
+    strcpy(root->k, temp->k);
+    root->right = del(root->right, temp->k);
+    return root;
+}
+
+Node *dict ::min(Node *q)
+{
+    while (q->left != NULL)
+    {
+        q = q->left;
+    }
+    return q;
+}
+
+int main()
+{
+    int ch;
+    dict d;
+    d.root = NULL;
+
+    while(true)
+    {
+        cout << "\nMenu \n1.Create \n2.Display ascending/descending \n3.Search \n4.Update \n5.Delete \n6.Exit \nEnter your choice:";
+        cin >> ch;
+
+        switch (ch)
+        {
+            case 1:
+                d.create();
+                break;
+
+            case 2:
+                if (d.root == NULL)
+                {
+                    cout << "\nNo Keyword in the dictionary";
+                }
+                else
+                {
+                    int ord;
+                    cout<<"\n1 - Ascending \n2 - Descending \nEnter choice for displaying:";
+                    cin>>ord;
+                    if(ord==1)
+                    {
+                        d.display_asc(d.root);
+
+                    }
+                    else{
+                        d.display_des(d.root);
+
+                    }
+                    
+                }
+                break;
+
+
+            case 3:
+                if (d.root == NULL)
+                {
+                    cout << "\nDictionary is Empty. First add keywords then try again ";
+                }
+                else
+                {
+                    char k[20];
+                    cout << "\nEnter Keyword which you want to search:";
+                    cin >> k;
+
+                    if (d.search(d.root, k) == 1)
+                        cout << "\nKeyword Found";
+                    else
+                        cout << "\nKeyword Not Found";
+                }
+                break;
+
+
+            case 4:
+                if (d.root == NULL)
+                {
+                    cout << "\nDictionary is Empty. First add keywords then try again ";
+                }
+                else
+                {
+                    char k[20];
+                    cout << "\nEnter Keyword whose meaning you want to update:";
+                    cin >> k;
+                    if (d.update(d.root, k) == 1)
+                        cout << "\nMeaning Updated";
+                    else
+                        cout << "\nMeaning Not Found";
+                }
+                break;
+
+
+            case 5:
+                if (d.root == NULL)
+                {
+                    cout << "\nDictionary is Empty. First add keywords then try again ";
+                }
+                else
+                {
+                    cout << "\nEnter Keyword which you want to delete:";
+                    char k[20];
+                    cin >> k;
+                    if (d.root == NULL)
+                    {
+                        cout << "\nKeyword is not present in the dictionary ";
+                    }
+                    else
+                    {
+                        d.root = d.del(d.root, k);
+                        cout<<"\nKeyword is deleted";
+                    }
+                }
+                break;
+
+            case 6:
+                exit(1);
+                break;
+
+            default:
+                cout<<"Oops!... Invalid choice"<<endl;
+                break;
+        }
+    } 
+    return 0;
 }
