@@ -1,3 +1,3 @@
 # MIT-ADT-Lab-Assignments
 
-It contains all programing labs assignments of MIT School of Engineering, MIT ADT University, Loni Kalbhor, Pune.
+This repository contains a compilation of all the programming lab assignments of the MIT School of Engineering and the MIT ADT University at Loni Kalbhor in Pune.
