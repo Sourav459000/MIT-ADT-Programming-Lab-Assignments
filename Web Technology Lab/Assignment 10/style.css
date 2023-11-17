@@ -1,0 +1,36 @@
+.animatedDiv {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Rounded corners for a circle */
+    margin: 20px;
+    transition: all 0.3s ease-in-out; /* Smooth transition for changes */
+}
+
+.blue {
+    background-color: blue;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.buttonContainer {
+    text-align: center;
+}
+
+.animationButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.animationButton:hover {
+    background-color: #45a049; /* Darker green on hover */
+}

@@ -3,44 +3,7 @@
 <head>
     <title>Enhanced jQuery Animation</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        .animatedDiv {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%; /* Rounded corners for a circle */
-            margin: 20px;
-            transition: all 0.3s ease-in-out; /* Smooth transition for changes */
-        }
-
-        .blue {
-            background-color: blue;
-        }
-
-        .green {
-            background-color: green;
-        }
-
-        .red {
-            background-color: red;
-        }
-
-        .buttonContainer {
-            text-align: center;
-        }
-
-        .animationButton {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .animationButton:hover {
-            background-color: #45a049; /* Darker green on hover */
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <table>
@@ -66,26 +29,6 @@
         </tr>
     </table>
 
-    <script>
-        $(document).ready(function() {
-            $(".animationButton").click(function() {
-                const $div = $(this).closest("td").find(".animatedDiv");
-
-                if ($div.hasClass("expanded")) {
-                    $div.animate({
-                        width: '100px',
-                        height: '100px',
-                        opacity: 1
-                    }, 1000).removeClass("expanded");
-                } else {
-                    $div.animate({
-                        width: '200px',
-                        height: '200px',
-                        opacity: 0.5
-                    }, 1000).addClass("expanded");
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

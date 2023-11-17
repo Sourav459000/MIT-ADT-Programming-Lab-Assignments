@@ -4,32 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Change Background Color</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            transition: background-color 0.5s;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin: 10px;
-            padding: 10px;
-            background-color: #3498db;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        li:hover {
-            background-color: #2980b9;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Click on an Item to Change Background Color</h1>
@@ -41,20 +16,6 @@
         <li>Item 5</li>
     </ul>
 
-    <script>
-        const colors = ["#FF5733", "#33FF57", "#5733FF", "#FF33AA", "#33AAFF"];
-
-        function changeBackgroundColor() {
-            const body = document.body;
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            body.style.backgroundColor = randomColor;
-        }
-
-        const listItems = document.querySelectorAll("li");
-
-        listItems.forEach((item) => {
-            item.addEventListener("click", changeBackgroundColor);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

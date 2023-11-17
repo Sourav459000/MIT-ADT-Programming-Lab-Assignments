@@ -1,40 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Assignment 4-D</title>
 </head>
+
 <body>
   <h1>Character Occurrences</h1>
-  
+
   <p>Array: ['a', 'b', 'a', 'c', 'z']</p>
-  
+
   <label for="targetCharacter">Enter a character:</label>
   <input type="text" id="targetCharacter">
   <button id="countButton">Count Occurrences</button>
-  
-  <p id="result"></p>
-  
-  <script>
-    const arr = ['a', 'b', 'a', 'c', 'z'];
 
-    document.getElementById("countButton").addEventListener("click", () => {
-      const targetCharacter = document.getElementById("targetCharacter").value;
-      
-      function countOccurrences(array, target) {
-        let count = 0;
-        for (const char of array) {
-          if (char === target) {
-            count++;
-          }
-        }
-        return count;
-      }
-      
-      const occurrences = countOccurrences(arr, targetCharacter);
-      document.getElementById("result").textContent = `Occurrences of ${targetCharacter} is ${occurrences}`;
-    });
-  </script>
+  <p id="result"></p>
+
+  <script src="script.js"></script>
+
 </body>
+
 </html>
