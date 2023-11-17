@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        h1 {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .content {
+            display: flex;
+        }
+
+        .books {
+            flex: 1;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+        }
+
+        .cart {
+            flex: 1;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .total {
+            text-align: right;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <div class="content">
+            <div class="books">
+                <h2>Books</h2>
+                <ul id="book-list">
+                </ul>
+            </div>
+            <div class="cart">
+                <h2>Cart</h2>
+                <ul id="cart-list">
+                </ul>
+                <div class="total">
+                    Total: $<span id="cart-total">0.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const books = [
+            { id: 1, title: 'Book 1', price: 10 },
+            { id: 2, title: 'Book 2', price: 15 },
+            { id: 3, title: 'Book 3', price: 20 },
+        ];
+
+        const cart = [];
+
+        function displayBooks() {
+            const bookList = document.getElementById('book-list');
+            bookList.innerHTML = '';
+
+            books.forEach(book => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `${book.title} - $${book.price} <button onclick="addToCart(${book.id})">Add to Cart</button>`;
+                bookList.appendChild(listItem);
+            });
+        }
+
+        function addToCart(bookId) {
+            const book = books.find(b => b.id === bookId);
+            if (book) {
+                const existingCartItem = cart.find(item => item.id === bookId);
+                if (existingCartItem) {
+                    existingCartItem.quantity++;
+                } else {
+                    cart.push({ ...book, quantity: 1 });
+                }
+                displayCart();
+            }
+        }
+
+        function displayCart() {
+            const cartList = document.getElementById('cart-list');
+            const cartTotalElement = document.getElementById('cart-total');
+            cartList.innerHTML = '';
+
+            let total = 0;
+
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                listItem.innerHTML = `${item.title} - $${item.price} - Quantity: ${item.quantity} - Total: $${itemTotal.toFixed(2)} <button onclick="removeFromCart(${item.id})">Remove</button>`;
+                cartList.appendChild(listItem);
+            });
+
+            cartTotalElement.textContent = total.toFixed(2);
+        }
+
+
+        function removeFromCart(bookId) {
+            const index = cart.findIndex(item => item.id === bookId);
+            if (index !== -1) {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity--;
+                } else {
+                    cart.splice(index, 1);
+                }
+                displayCart();
+            }
+        }
+
+        displayBooks();
+        displayCart();
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toggle Button Color</title>
+  <style>
+    #myButton {
+      padding: 10px 20px;
+      background-color: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    #myButton:hover,
+    #myButton.active:hover {
+      background-color: blue;
+    }
+
+    #myButton.active {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+
+<button id="myButton">Click me!</button>
+
+<script>
+  var button = document.getElementById("myButton");
+  var isButtonActive = false;
+
+  button.addEventListener("click", function() {
+    if (isButtonActive) {
+      button.style.backgroundColor = "red";
+      button.classList.remove("active");
+    } else {
+      button.style.backgroundColor = "green";
+      button.classList.add("active");
+    }
+    isButtonActive = !isButtonActive;
+  });
+</script>
+
+</body>
+</html>

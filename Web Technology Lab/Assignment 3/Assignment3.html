@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 3</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: rgb(203, 255, 255);">
+  <label for="name" style="padding-left: 10px;">Enter your name: </label>
+  <input type="text" id="name" />
+  <button class="btn btn-primary" onclick="displayWelcomeMessage()">Submit</button>
+  <p id="output"></p>
+
+  <table cellspacing="10">
+    <tbody>
+        <tr>
+            <td>
+                <label for="num1">Enter first number: </label>
+            </td>
+            <td>
+                <input type="number" id="num1" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="num2">Enter second number: </label>
+            </td>
+            <td>
+                <input type="number" id="num2" />
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <table style="padding-left: 20px;" cellspacing="10">
+    <tbody>
+        <tr>
+            <td>
+                <button class="btn btn-primary" onclick="performOperation('add')">Add</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" onclick="performOperation('subtract')">Subtract</button>
+            </td>
+            <td>
+                <button class="btn btn-primary" onclick="performOperation('multiply')">Multiply</button>
+            </td>
+
+            <td>
+                <button class="btn btn-primary" onclick="performOperation('divide')">Divide</button>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+  <p id="result"></p>
+
+  <script>
+    function displayWelcomeMessage() {
+      const name = document.getElementById("name").value;
+      const welcomeMessage = `Hello ${name}! Welcome To World of JavaScript`;
+      document.getElementById("output").innerText = welcomeMessage;
+    }
+    function performOperation(operation) {
+      const num1 = Number(document.getElementById("num1").value);
+      const num2 = Number(document.getElementById("num2").value);
+
+      let result;
+
+      switch (operation) {
+        case "add":
+          result = num1 + num2;
+          break;
+        case "subtract":
+          result = num1 - num2;
+          break;
+        case "multiply":
+          result = num1 * num2;
+          break;
+        case "divide":
+          result = num1 / num2;
+          break;
+        default:
+          result = "Invalid operation";
+          break;
+      }
+
+      document.getElementById("result").innerText = `Result: ${result}`;
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+.header {
+    height: 3rem;
+    background-color: #85F4FF;
+    width: 50%;
+}
+h1 {
+    color: #14279B;
+    padding: 5px;
+    padding-left: 20%;
+}
+td {
+    font-size: 1.2rem;
+}
+.normal-input,select {
+    min-width: 400px;
+    font-size: 1.2rem;
+}
+table{
+    background-color: #EFFFFD;
+}
+button {
+    background-color: #85F4FF;
+    color: #14279B;
+    border: none;
+    font-size: 1.2rem;
+}
+button:hover{
+    cursor: pointer;
+    opacity:.6;
+}
