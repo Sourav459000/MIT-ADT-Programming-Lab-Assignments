@@ -1,6 +1,6 @@
 # MIT ADT Lab Assignments
 
-Welcome to the MIT ADT Lab Assignments repository! This collection features programming lab assignments from MIT-SOE and MIT-SOC at MIT ADT University, Loni Kalbhor, Pune. These hands-on exercises cover a diverse range of topics, providing a valuable resource for students to enhance their programming skills.
+Welcome to the MIT ADT Lab Assignments repository! This collection features programming lab assignments from MIT-SOC at MIT ADT University specifically for CSE, Loni Kalbhor, Pune. These hands-on exercises cover a diverse range of topics, providing a valuable resource for students to enhance their programming skills.
 
 ## Getting Started:
 
