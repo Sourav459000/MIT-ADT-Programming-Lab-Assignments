@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+    <style>
+        .header {
+            height: 3rem;
+            background-color: #85F4FF;
+            width: 50%;
+        }
+
+        h1 {
+            color: #14279B;
+            padding: 5px;
+            padding-left: 20%;
+        }
+
+        td {
+            font-size: 1.2rem;
+        }
+
+        .normal-input,
+        select {
+            min-width: 400px;
+            font-size: 1.2rem;
+        }
+
+        table {
+            background-color: #EFFFFD;
+        }
+
+        button {
+            background-color: #85F4FF;
+            color: #14279B;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        button:hover {
+            cursor: pointer;
+            opacity: .6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>
+            Company Registration Form
+        </h1>
+    </div>
+    <div>
+        <form action="mailto:sourav280902@gmail.com" method="post" enctype="text/plain">
+            <table cellspacing="27">
+                <tbody>
+                    <tr>
+                        <td>
+                            <Label for="Enter your namem">Enter your name:</Label>
+                        </td>
+                        <td>
+                            <input class="normal-input" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Label>Choose the role you want to apply:</Label>
+                        </td>
+                        <td>
+                            <select name="position" id="position">
+                                <option value="SoftwareEngineer">Software Engineer</option>
+                                <option value="Project Manager">Project Manager</option>
+                                <option value="CloudArchitect">Cloud Architect</option>
+                                <option value="DataAnalyst">Data Analyst</option>
+                                <option value="NetworkAdministrator">Network Administrator</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Label for="Gender">Gender:</Label>
+                        </td>
+                        <td>
+                            <input type="radio" name="gender" id="male" value="male">Male
+                            <input type="radio" name="gender" id="female" value="female">female
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Label for="Age">Age:</Label>
+                        </td>
+                        <td>
+                            <input class="normal-input" type="number" name="age" id="age">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Label for="Describe yourself">Describe yourself:</Label>
+                        </td>
+                        <td>
+                            <textarea class="normal-input" name="describe" id="Describe yourself" cols="30"
+                                rows="2"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Label for="Experience">Experience (in years):</Label>
+                        </td>
+                        <td>
+                            <input class="normal-input" type="number" name="Experience" id="Experience">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Label for="Email">Email:</Label>
+                        </td>
+                        <td>
+                            <input class="normal-input" type="Email" name="Email" id="Email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Label for="Phone">Phone:</Label>
+                        </td>
+                        <td>
+                            <input class="normal-input" type="text" name="Phone" id="Phone">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <button type="submit" type="submit">Submit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>

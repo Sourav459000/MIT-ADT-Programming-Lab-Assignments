@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Culture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+        }
+        .navbar {
+            background-color: #9c7148;
+            color: #fff;
+            margin: 20px 30px;
+            border-radius: 50px;
+        }
+        .navbar-table {
+            margin-left: 30%;
+            margin-right: 30%;
+            text-align: left;
+            width: 500px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(209, 135, 92, 0.274);
+        }
+        .container-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #9c7148;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .coffee-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .coffee-type-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .order-button {
+            background-color: #9c7148;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .order-button:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <table class="navbar-table" cellspacing="10">
+            <tr>
+                <td>
+                    <img style="height: 100px; width: 100px; border-radius: 50px;" src="images/logo.jpg" alt="logo-jpg" srcset="">
+                </td>
+                <td>
+                    <h1 style="text-align: left;">Coffee Culture</h1>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="container">
+        <h2>Menu</h2>
+        <table class="container-table">
+            <tr>
+                <th>Coffee</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+            <tr>
+                <td>Americano</td>
+                <td>$2.50</td>
+                <td><img src="images/americano.jpg" alt="Americano" class="coffee-image"></td>
+            </tr>
+            <tr>
+                <td>Latte</td>
+                <td>$3.00</td>
+                <td><img src="images/latte.jpg" alt="Latte" class="coffee-image"></td>
+            </tr>
+            <tr>
+                <td>Cappuccino</td>
+                <td>$3.50</td>
+                <td><img src="images/cappuccino.jpg" alt="Cappuccino" class="coffee-image"></td>
+            </tr>
+        </table>
+        <h2>Order</h2>
+        <form>
+            <label for="coffee-type">Select Coffee Type:</label>
+            <select id="coffee-type" name="coffee-type" class="coffee-type-select">
+                <option value="americano">Americano</option>
+                <option value="latte">Latte</option>
+                <option value="cappuccino">Cappuccino</option>
+            </select>
+            <br>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+            <br>
+            <p>Total Price: <span id="total-price">$2.50</span></p>
+            <button type="submit" class="order-button">Place Order</button>
+        </form>
+    </div>
+
+    <script>
+        function updateTotalPrice() {
+            const coffeeTypeSelect = document.getElementById("coffee-type");
+            const quantityInput = document.getElementById("quantity");
+            const totalPriceSpan = document.getElementById("total-price");
+
+            const coffeePrices = {
+                americano: 2.50,
+                latte: 3.00,
+                cappuccino: 3.50
+            };
+
+            const selectedCoffeeType = coffeeTypeSelect.value;
+            const quantity = parseFloat(quantityInput.value);
+
+            const total = coffeePrices[selectedCoffeeType] * quantity;
+
+            totalPriceSpan.textContent = `$${total.toFixed(2)}`;
+        }
+
+        document.getElementById("coffee-type").addEventListener("change", updateTotalPrice);
+        document.getElementById("quantity").addEventListener("input", updateTotalPrice);
+
+        updateTotalPrice();
+    </script>
+</body>
+</html>

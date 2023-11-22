@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #ecf0f1;
+        }
+        h2 {
+            color: #3498db;
+        }
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Palindrome Checker</h2>
+
+    <button onclick="checkPalindrome()">Check Palindrome</button>
+
+    <p id="result"></p>
+
+    <script>
+        function checkPalindrome() {
+            var inputString = prompt("Enter a String:").toLowerCase();
+
+            if (isPalindrome(inputString)) {
+                alert("The entered string is a Palindrome!");
+            } else {
+                alert("The entered string is not a Palindrome.");
+            }
+        }
+
+        function isPalindrome(str) {
+            var len = str.length;
+            for (var i = 0; i < len / 2; i++) {
+                if (str[i] !== str[len - 1 - i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>

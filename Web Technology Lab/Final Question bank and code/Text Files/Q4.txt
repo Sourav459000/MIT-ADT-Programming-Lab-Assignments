@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 flower shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ffd9e3;
+            padding: 10px;
+            /* text-align: center; */
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ffafc9;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-image {
+            padding-left: 150px;
+            width: 150px;
+            max-height: 400px;
+        }
+
+        .flower-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .flower-item {
+            text-align: center;
+        }
+
+        .flower-item img {
+            width: 100%;
+            max-height: 200px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <img class="hero-image" src="images/flower_shop_hero.png" alt="Bloom Flower Shop">
+                    </td>
+                    <td>
+                        <h1 style="padding-left: 20px; font-size: 3rem;">Bloom</h1>
+                        <p style="padding-left: 20px; font-size: 1.5rem;">Your one-stop flower shop</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="container">
+
+        <h2>Welcome to Blossom Blooms</h2>
+        <p>
+            At Blossom Blooms, we offer a wide variety of fresh and beautiful flowers for every occasion.
+            From birthdays to anniversaries, we have the perfect bouquet to brighten up your day.
+            Browse our selection and order online for delivery right to your doorstep.
+        </p>
+
+        <h2>Featured Flowers</h2>
+        <div class="flower-grid">
+            <div class="flower-item">
+                <img src="images/flower1.jpg" alt="Flower 1">
+                <h3>Rose Elegance</h3>
+                <p>$24.99</p>
+            </div>
+            <div class="flower-item">
+                <img src="images/flower2.jpg" alt="Flower 2">
+                <h3>Tulip Delight</h3>
+                <p>$19.99</p>
+            </div>
+            <div class="flower-item">
+                <img src="images/flower3.jpg" alt="Flower 3">
+                <h3>Lily Serenity</h3>
+                <p>$29.99</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

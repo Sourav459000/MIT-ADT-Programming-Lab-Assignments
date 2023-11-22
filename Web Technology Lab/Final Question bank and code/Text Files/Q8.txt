@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f7f7f7;
+        }
+        h2 {
+            color: #3498db;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 50%;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #3498db;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Multiplication Table</h2>
+
+    <table>
+        <tr>
+            <th colspan="2">Enter Table Dimensions</th>
+        </tr>
+        <tr>
+            <td><label for="rowInput">Number of Rows:</label></td>
+            <td><input type="text" id="rowInput"></td>
+        </tr>
+        <tr>
+            <td><label for="colInput">Number of Columns:</label></td>
+            <td><input type="text" id="colInput"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="displayTable()">Display Multiplication Table</button></td>
+        </tr>
+    </table>
+
+    <div id="tableDisplay"></div>
+
+    <script>
+        function displayTable() {
+            var rowInput = document.getElementById("rowInput").value;
+            var colInput = document.getElementById("colInput").value;
+
+            var rows = parseInt(rowInput);
+            var cols = parseInt(colInput);
+
+            if (!isNaN(rows) && !isNaN(cols) && rows > 0 && cols > 0) {
+                var tableContent = "<h3>Multiplication Table</h3><table>";
+
+                for (var i = 1; i <= rows; i++) {
+                    tableContent += "<tr>";
+
+                    for (var j = 1; j <= cols; j++) {
+                        tableContent += "<td>" + (i * j) + "</td>";
+                    }
+
+                    tableContent += "</tr>";
+                }
+
+                tableContent += "</table>";
+                document.getElementById("tableDisplay").innerHTML = tableContent;
+            } else {
+                alert("Please enter valid positive integers for rows and columns.");
+            }
+        }
+    </script>
+
+</body>
+</html>

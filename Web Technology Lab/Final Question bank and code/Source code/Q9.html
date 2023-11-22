@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #ecf0f1;
+        }
+
+        h2 {
+            color: #3498db;
+        }
+
+        #colorDiv {
+            width: 300px;
+            height: 200px;
+            margin: 20px auto;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            background-color: #ffffff;
+            transition: background-color 0.5s ease;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 80%;
+            box-sizing: border-box;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+        }
+
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 80%;
+            box-sizing: border-box;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Color Changer</h2>
+
+    <label for="colorInput">Enter a Color:</label>
+    <input type="text" id="colorInput" placeholder="Enter color in hexadecimal, rgb, or name format">
+
+    <label for="formatSelect">Choose Color Format:</label>
+    <select id="formatSelect">
+        <option value="hex">Hexadecimal</option>
+        <option value="rgb">RGB</option>
+        <option value="name">Color Name</option>
+    </select>
+
+    <button onclick="changeColor()">Apply Color</button>
+
+    <div id="colorDiv"></div>
+
+    <script>
+        function changeColor() {
+            var colorInput = document.getElementById("colorInput").value;
+            var formatSelect = document.getElementById("formatSelect").value;
+            var colorDiv = document.getElementById("colorDiv");
+
+            if (isValidColor(colorInput, formatSelect)) {
+                colorDiv.style.backgroundColor = convertToRGB(colorInput, formatSelect);
+            } else {
+                alert("Invalid color input. Please enter a valid color value.");
+            }
+        }
+
+        function isValidColor(color, format) {
+            var colorRegex;
+
+            switch (format) {
+                case 'hex':
+                    colorRegex = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
+                    break;
+                case 'rgb':
+                    colorRegex = /^rgb\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*\)$/;
+                    break;
+                case 'name':
+                    colorRegex = /^[a-zA-Z]+$/;
+                    break;
+                default:
+                    return false;
+            }
+
+            return colorRegex.test(color);
+        }
+
+        function convertToRGB(color, format) {
+            switch (format) {
+                case 'hex':
+                    return hexToRGB(color);
+                case 'rgb':
+                    return color;
+                case 'name':
+                    return colorNameToRGB(color);
+                default:
+                    return '';
+            }
+        }
+
+        function hexToRGB(hex) {
+            hex = hex.replace(/^#/, '');
+
+            if (hex.length === 3) {
+                hex = hex.replace(/(.)/g, '$1$1');
+            }
+
+            var bigint = parseInt(hex, 16);
+            var r = (bigint >> 16) & 255;
+            var g = (bigint >> 8) & 255;
+            var b = bigint & 255;
+
+            return 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+
+        function colorNameToRGB(colorName) {
+            var knownColors = {
+                'red': 'rgb(255, 0, 0)',
+                'green': 'rgb(0, 128, 0)',
+                'blue': 'rgb(0, 0, 255)',
+                'yellow': 'rgb(255, 255, 0)',
+                'purple': 'rgb(128, 0, 128)',
+            };
+
+            return knownColors[colorName.toLowerCase()] || colorName;
+        }
+    </script>
+
+</body>
+
+</html>

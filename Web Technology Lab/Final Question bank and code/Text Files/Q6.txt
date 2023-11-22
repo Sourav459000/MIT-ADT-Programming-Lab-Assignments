@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        h2 {
+            color: #3498db;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 50%;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Task 1: Find the Largest of Three Numbers</h2>
+
+    <table>
+        <tr>
+            <th>Number</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Number 1</td>
+            <td><input type="text" id="num1"></td>
+        </tr>
+        <tr>
+            <td>Number 2</td>
+            <td><input type="text" id="num2"></td>
+        </tr>
+        <tr>
+            <td>Number 3</td>
+            <td><input type="text" id="num3"></td>
+        </tr>
+    </table>
+
+    <button onclick="findLargest()">Find Largest</button>
+
+    <table>
+        <tr>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td id="result1"></td>
+        </tr>
+    </table>
+
+    <h2>Task 2: Display Sum of Integers</h2>
+
+    <table>
+        <tr>
+            <th>Number</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Number</td>
+            <td><input type="text" id="userNumber"></td>
+        </tr>
+    </table>
+
+    <button onclick="calculateSum()">Calculate Sum</button>
+
+    <table>
+        <tr>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td id="result2"></td>
+        </tr>
+    </table>
+
+    <script>
+        function findLargest() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var num3 = parseFloat(document.getElementById("num3").value);
+
+            var largest = Math.max(num1, num2, num3);
+
+            document.getElementById("result1").innerHTML = "<h2>" + largest + "</h2>";
+        }
+
+        function calculateSum() {
+            var number = parseInt(document.getElementById("userNumber").value);
+            var sum = 0;
+
+            for (var i = 0; i <= number; i++) {
+                sum += i;
+            }
+
+            document.getElementById("result2").innerHTML = "<h2>" + sum + "</h2>";
+        }
+    </script>
+
+</body>
+</html>

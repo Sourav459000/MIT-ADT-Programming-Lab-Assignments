@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Rows and Triangle Area</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #ecf0f1;
+        }
+        h2 {
+            color: #3498db;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 50%;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+            box-sizing: border-box;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Table Rows and Triangle Area</h2>
+
+    <button onclick="addRow()">Add Row to Table</button>
+
+    <table id="myTable">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+    </table>
+
+    <hr>
+
+    <table>
+        <tr>
+            <td>
+                <label for="side1">Enter Side 1 of the Triangle:</label>
+            </td>
+            <td>
+                <input type="text" id="side1" placeholder="Enter side 1">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="side2">Enter Side 2 of the Triangle:</label>
+            </td>
+            <td>
+                <input type="text" id="side2" placeholder="Enter side 2">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="side3">Enter Side 3 of the Triangle:</label>
+            </td>
+            <td>
+                <input type="text" id="side3" placeholder="Enter side 3">
+            </td>
+        </tr>
+    </table>
+  
+    <button onclick="calculateTriangleArea()">Calculate Triangle Area</button>
+
+    <p id="triangleArea"></p>
+
+    <script>
+        function addRow() {
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(table.rows.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            
+            // Make the content editable for user input
+            cell1.innerHTML = `<div contenteditable="true">New Data 1</div>`;
+            cell2.innerHTML = `<div contenteditable="true">New Data 2</div>`;
+        }
+
+        function calculateTriangleArea() {
+            var side1 = parseFloat(document.getElementById("side1").value);
+            var side2 = parseFloat(document.getElementById("side2").value);
+            var side3 = parseFloat(document.getElementById("side3").value);
+
+            if (isNaN(side1) || isNaN(side2) || isNaN(side3) || side1 <= 0 || side2 <= 0 || side3 <= 0) {
+                alert("Please enter valid positive numbers for all sides of the triangle.");
+                return;
+            }
+
+            var s = (side1 + side2 + side3) / 2;
+            var area = Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
+
+            document.getElementById("triangleArea").innerHTML = "Area of the triangle: " + area.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        h2 {
+            color: #3498db;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 50%;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Array Operations</h2>
+
+    <table>
+        <tr>
+            <th>Array</th>
+        </tr>
+        <tr>
+            <td id="arrayDisplay"></td>
+        </tr>
+    </table>
+
+    <button onclick="displayArray()">1. Display Entered Array</button>
+    <button onclick="displayAscending()">2. Display Entered Array in Ascending Order</button>
+    <button onclick="pushElement()">3. Push Element at a Specific Position</button>
+    <button onclick="displayUpdatedArray()">4. Display Updated Array</button>
+    <button onclick="displayLength()">5. Print Length of Array</button>
+    <button onclick="displayElementAtPosition()">6. Show Element at a Particular Position</button>
+
+    <script>
+        var userArray = [8, 4, 10, 6, 2]; // Predefined array
+
+        function displayArray() {
+            document.getElementById("arrayDisplay").innerHTML = "<h2>Entered Array: " + userArray.join(", ") + "</h2>";
+        }
+
+        function displayAscending() {
+            var sortedArray = userArray.slice().sort(function (a, b) {
+                return a - b;
+            });
+
+            document.getElementById("arrayDisplay").innerHTML = "<h2>Array in Ascending Order: " + sortedArray.join(", ") + "</h2>";
+        }
+
+        function pushElement() {
+            var element = prompt("Enter the element to push:");
+            var position = prompt("Enter the position to push the element:");
+
+            if (position >= 0 && position <= userArray.length) {
+                userArray.splice(position, 0, element);
+                displayUpdatedArray();
+            } else {
+                alert("Invalid position. Element not pushed.");
+            }
+        }
+
+        function displayUpdatedArray() {
+            document.getElementById("arrayDisplay").innerHTML = "<h2>Updated Array: " + userArray.join(", ") + "</h2>";
+        }
+
+        function displayLength() {
+            document.getElementById("arrayDisplay").innerHTML = "<h2>Array Length: " + userArray.length + "</h2>";
+        }
+
+        function displayElementAtPosition() {
+            var position = prompt("Enter the position to display the element:");
+
+            if (position >= 0 && position < userArray.length) {
+                document.getElementById("arrayDisplay").innerHTML = "<h2>Element at Position " + position + ": " + userArray[position] + "</h2>";
+            } else {
+                alert("Invalid position.");
+            }
+        }
+    </script>
+
+</body>
+</html>
