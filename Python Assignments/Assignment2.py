@@ -1,0 +1,16 @@
+num1 = int(input("Enter number 1: "))
+num2 = int(input("Enter number 2: "))
+Add = num1+num2
+Sub = num1-num2
+Div = num1/num2
+Floor_Div = num1//num2
+Mul = num1*num2
+Exp = num1**num2
+Mod = num1 % num2
+print("Addition = ", Add)
+print("Subtraction = ", Sub)
+print("Division = ", Div)
+print("Floor Division = ", Floor_Div)
+print("Multiplication = ", Mul)
+print("Exponentiation(num1^num2) = ", Exp)
+print("Modulus = ", Mod)

@@ -1,0 +1,6 @@
+LAC SYLLABUS
+UNIT 1: Matrices
+UNIT 2: Linear Algebra and Mapping
+UNIT 3: Limit, Continuity and differentiation of univariate function
+UNIT 4: Infinte series and Expansion of Functions
+UNIT 5: Integral Calculus and Fourier Series
